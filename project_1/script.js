@@ -33,4 +33,5 @@ switchDiv.addEventListener('click', () => {
         }, 200)
 
     }
+	music.loop=true
 })
