@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>滑条验证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            user-select: none;
+        }
+
+        .wrap {
+            position: absolute;
+            /* border: 1px solid #aaa; */
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #e8e8e8;
+            transform: translate(50px, 80px);
+        }
+
+        /* 外部div有色 宽度为0  滑块移动时赋予宽度使显色*/
+        .wrap .outside {
+            position: relative;
+
+            width: 0;
+            height: 100%;
+            /* background: rgb(177, 177, 177); */
+            background: #00b894;
+
+            /* z-index: 1; */
+        }
+
+        .wrap .inside {
+            position: absolute;
+            /* z-index: 2; */
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+
+        }
+
+
+
+        .wrap .slider {
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 1px solid #ccc;
+            z-index: 3;
+        }
+
+        /* .wrap .slider img {} */
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="outside">
+            <div class="inside">拖动滑块验证
+                <div class="slider"><img src="start.png" alt="开始"></div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        const outside = document.querySelector('.outside')
+        const inside = document.querySelector('.inside')
+        const img = document.querySelector('img')
+        const slider = document.querySelector('.slider')
+        let startX, moveX, isMouseDown
+        slider.addEventListener('mousedown', function (e) {
+            isMouseDown = true
+            console.log(isMouseDown);
+            startX = e.clientX
+            // console.log('startX:' + startX);
+
+            // slider.style.userSelect = 'none'
+        })
+
+        slider.addEventListener('mousemove', function (e) {
+            if (!isMouseDown) return false
+            moveX = e.clientX - startX
+            if (moveX < 0) moveX = 0
+            if (moveX > 260) moveX = 260
+            slider.style.left = moveX + 'px'
+            outside.style.width = moveX + 'px'
+            if (moveX >= 260) {
+                inside.style.color = 'white'
+                img.src = 'success.png'
+            }
+
+        }), document.addEventListener('mouseup', function () {
+            isMouseDown = false
+            console.log(isMouseDown);
+            if (moveX < 260) {
+                img.src = 'start.png'
+                slider.style.left = 0
+                outside.style.width = 0
+                inside.style.color = 'black'
+            }
+        })
+
+
+        // delete slider.style.userSelect;
+        // slider.removeEventListener('mousemove', function () {
+        //     if (moveX < 260) {
+        //         img.src = 'start.png'
+        //         slider.style.left = 0
+        //         inside.style.width = 0
+        //         inside.style.color = 'black'
+        //     }
+        // })
+    </script>
+</body>
+
+</html>
