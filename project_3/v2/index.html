@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <!-- 顶部白条 -->
+        <div class="bar">
+            <span></span>
+        </div>
+        <!-- 显示屏   操作  结果-->
+        <div class="screen">
+            <div class="prev"></div>
+            <div class="current"></div>
+        </div>
+        <!-- 历史记录与其他功能键 -->
+        <div class="more">
+            <button class="s" onclick="showHistory()">s</button>
+            <button class="c" onclick="showCalculator()" style="display: none;">c</button>
+            <button class="m">m</button>
+        </div>
+        <div class="history" style="display:none;">
+            <ul class="ul"></ul>
+            <button class="clc" onclick="clearHistory()">clc</button>
+        </div>
+        <!-- 按钮 -->
+        <div class="buttons">
+            <button class="function" data-type="operate">mc</button>
+            <button class="function" data-type="operate">m+</button>
+            <button class="function" data-type="operate">m-</button>
+            <button class="function" data-type="operate">mr</button>
+            <button class="function" data-type="clear">AC</button>
+            <button class="function" data-type="delete">del</button>
+            <button class="function" data-type="sign">+/-</button>
+            <button class="function" data-type="operate">÷</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="function" data-type="operate">*</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="function" data-type="operate">-</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="function" data-type="operate">+</button>
+            <button data-type="operate">%</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="btn-equal" data-type="equal">=</button>
+        </div>
+        <!-- 底部白条 -->
+        <div class="bar">
+            <span></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
